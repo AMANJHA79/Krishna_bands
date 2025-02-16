@@ -8,7 +8,9 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-family: "Gilroy", sans-serif;
+  /* font-family: Georgia, 'Times New Roman', Times, serif;
+   */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f5f5;
   overflow-x: hidden;
 }
@@ -197,14 +199,18 @@ nav ul li a:hover {
 /*------------------------page2-------------------------- */
 
 .about {
-  width: 100%;
-  height: 100vh;
+  /* width: 100%; */
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
   /* background-color: #B82132; */
+  /* padding: 1rem 2rem; */
+  /* flex-direction: column; */
 }
+
+
 .about .left {
   width: 50%;
   height: 100vh;
@@ -255,10 +261,15 @@ nav ul li a:hover {
   flex-wrap: wrap;
 }
 .services h1 {
-  font-size: 3vw;
-  margin-top: 0.5rem;
-  color: #b82132;
+  width: fit-content;
+  /* background-color: red; */
+  font-family: 'kalam';
+  font-size: 3rem;
+  color: #000;
   text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #b82132;
+  margin:  0 auto;
 }
 
 .service_box {
@@ -315,38 +326,9 @@ nav ul li a:hover {
   margin-top: 0.5rem;
 }
 
-.customers {
-  width: 100%;
-  padding: 2rem; /* Increased padding for better spacing */
-  text-align: center; /* Centered text */
-  border-radius: 10px; /* Rounded corners */
-  background-color: #f8f8f8; /* Light background for contrast */
-}
 
-.customers h1 {
-  font-size: 2.5rem; /* Increased font size for the heading */
-  color: #b82132; /* Consistent color with the theme */
-  margin-bottom: 1rem; /* Space below the heading */
-}
 
-.customers h2 {
-  font-size: 1.8rem; /* Increased font size for the subheading */
-  color: #333; /* Darker color for better readability */
-  margin-bottom: 1rem; /* Space below the subheading */
-}
 
-.customers ul {
-  list-style: none; /* Remove default list styling */
-  padding: 0; /* Remove padding */
-  font-size: 1.2rem; /* Font size for list items */
-  color: #333; /* Darker color for better readability */
-}
-
-.customers p {
-  font-size: 1.5rem; /* Font size for the paragraph */
-  color: #555; /* Slightly lighter color for the paragraph */
-  margin-top: 1rem; /* Space above the paragraph */
-}
 
 /*---------------------------page4--------------------------- */
 
@@ -360,16 +342,21 @@ nav ul li a:hover {
           flex-direction: column;
 }
 .photos h1 {
-          font-size: 3vw;
-          color: #b82132;
-          text-align: center;
-          margin: 2rem 0 ;
+  width: fit-content;
+  /* background-color: red; */
+  font-family: 'kalam';
+  font-size: 1.875rem;
+  color: #000;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #b82132;
+  margin:  0 auto;
 }
 .grid-container {
   columns: 5 200px;
   column-gap: 1.5rem;
   width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto;
   div {
     width: 150px;
     margin: 0 1.5rem 1.5rem 0;
@@ -398,3 +385,213 @@ nav ul li a:hover {
 }
 
 
+.customer p {
+  font-size: 1.5rem; /* Font size for the paragraph */
+  color: #555; /* Slightly lighter color for the paragraph */
+  margin-top: 1rem; /* Space above the paragraph */
+}
+
+
+
+.customer{
+  /* min-height: 50vh; */
+  padding: 5rem 3rem;
+  /* background-color: gray; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10vw;
+}
+.customer h5{
+  font-size: 1.875rem;
+  text-align: center;
+  color: #000;
+}
+.customer p{
+  font-size: 1.5rem;
+  color: #454545;
+
+}
+
+
+/*---------------------------page5--------------------------- */
+
+.review{
+  width: 100%;
+  /* min-height: 100vh; */
+  /* gap: 2rem; */
+  /* background-color: blue; */
+  padding: 2rem;
+  margin-top: 3rem;
+}
+.review>h1{
+  width: fit-content;
+  /* background-color: red; */
+  font-family: 'kalam';
+  font-size: 1.875rem;
+  color: #000;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #b82132;
+  margin:  0 auto;
+}
+
+.review_box{
+  width: 90%;
+  margin: 2rem auto;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.review_box .boxes{
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.review_box .boxes h1{
+  font-size: 1rem;
+  width: 100%;
+  text-align: end;
+}
+
+
+/* -------------------footer------------------- */
+.Add_Details {
+  width: 100%;
+  /* height: 50px; */
+  /* background-color: #b82132; */
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 2rem  0;
+  margin-top: 5rem;
+}
+.Add_Details .details_left{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+.details_left img{
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.details_left h1{
+  font-size: 1.875rem;
+  color: #000;
+  text-align: center;
+}
+
+.details_left p{
+  font-size: 1.5rem;
+  color: #454545;
+  text-align: center;
+}
+.details_left a{
+  font-size: 1.5rem;
+  color: #454545;
+  text-align: center;
+}
+
+.address{
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+.address h1{
+  font-size: 1.875rem;
+  color: #000;
+  text-align: center;
+}
+
+iframe{
+  width: 350px;
+  height: 350px;
+  border: 0;
+}
+
+/* -------------------form page------------------- */
+.form{
+  width: 100%;
+  /* height: 50px; */
+  /* background-color: #b82132; */
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem  0;
+  margin-top: 5rem;
+}
+.form h1{
+  font-family: kalam;
+  font-size: 1.875rem;
+  color: #000;
+  text-align: center;
+}
+.form input[type="text"]{
+  /* width: 50%; */
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  border: 1px solid #000;
+  outline: none;
+  font-size: 1.1rem;
+}
+.form button{
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  /* border: 1px solid #000; */
+  outline: none;
+  font-size: 1.1rem;
+  background-color: #b82132;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 30px;
+
+}
+
+
+/* -------------------footer------------------- */
+
+footer{
+  width: 100%;
+  /* height: 50px; */
+  /* background-color: #b82132; */
+  color: #000;
+  text-align: center;
+  padding: 1rem 0;
+}
+footer p{
+  font-size: 1rem;
+  color: #000;
+}
+footer h2{
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #000;
+}
