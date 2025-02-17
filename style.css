@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Laila:wght@300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-family: "kalam", serif;
+  font-family: "Kalam", cursive;
   background-color: #f2f2f2;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -199,7 +199,8 @@ nav {
 
 }
 .home .left h1 {
-  font-family: 'Monggoland';
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
   font-size: 7rem;
   margin-top: 8rem;
   margin-left: 5rem;
@@ -210,14 +211,13 @@ nav {
   /* background-color: #4f4f4f; */
 }
 .home .left p {
-  font-family: 'Monggoland';
+  font-family: "Laila", sans-serif;
   font-size: 3rem;
   margin-left: 0;
   color: #b82133c9;
   line-height: 1.2;
   text-align: center;
 }
-
 
 .left .button {
   display: flex;
@@ -328,7 +328,7 @@ nav {
   }
   
   .home .left h1 {
-    font-family: 'Monggoland';
+    font-family: "Dancing Script", cursive;
     width: 100%;
     font-size: 3rem;
     margin-top: 6rem;
@@ -338,7 +338,7 @@ nav {
     line-height: 1.2;
   }
   .home .left p {
-    font-family: 'gilroy';
+    font-family: "Laila", sans-serif;
     font-size: 1.875rem;
     margin-left: 0;
     margin-top: 1rem;
@@ -489,7 +489,7 @@ nav {
 .services h1 {
   width: fit-content;
   /* background-color: red; */
-  font-family: 'kalam';
+  font-family: "Kalam", cursive;
   font-size: 2.5rem;
   color: #000;
   text-align: center;
@@ -689,7 +689,7 @@ nav {
 .review>h1{
   width: fit-content;
   /* background-color: red; */
-  font-family: 'kalam';
+  font-family: "Kalam", cursive;
   font-size: 1.875rem;
   color: #000;
   text-align: center;

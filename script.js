@@ -63,6 +63,33 @@ function navScrollEffect() {
   });
 }
 
+
+// Home section animation
+gsap.from('.home h1, .home p', {
+    duration: 1.2,
+    y: 50,
+    opacity: 0,
+    stagger: 0.2,
+    ease: "power4.out",
+    scrollTrigger: {
+        trigger: '.home',
+        start: "top center"
+    }
+});
+
+gsap.from('.home img', {
+    duration: 1.5,
+    scale: 0.9,
+    opacity: 0,
+    ease: "power4.out",
+    scrollTrigger: {
+        trigger: '.home',
+        start: "top center"
+    }
+});
+
+
+
 };
 
 init();
@@ -108,3 +135,10 @@ function navSlide() {
 }
 
 navSlide();
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        locoScroll.update();
+        ScrollTrigger.refresh();
+    }, 1000);
+});
