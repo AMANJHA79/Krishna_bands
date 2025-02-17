@@ -5,7 +5,9 @@ const init=()=>{
 
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector(".main"),
-  smooth: true
+  smooth: true,
+  lerp: 0.05,
+  multiplier: 0.7
 });
 // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
 locoScroll.on("scroll", ScrollTrigger.update);
@@ -29,8 +31,80 @@ ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
 ScrollTrigger.refresh();
 
+// Add smooth scroll behavior for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      locoScroll.scrollTo(target, {
+        offset: -80,
+        duration: 1.2,
+        easing: [0.25, 0.0, 0.35, 1.0]
+      });
+    }
+  });
+});
+
+function navScrollEffect() {
+  const nav = document.querySelector('nav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+  });
+}
+
 };
 
 init();
 
+Shery.mouseFollower();
 
+
+Shery.makeMagnet("nav a" /* Element to target.*/, {
+  //Parameters are optional.
+  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+  duration: 1,
+});
+
+gsap.from('nav a',{
+  x: 10,
+  delay: 0.5,
+  stagger: 0.2,
+  duration: 1
+})
+
+
+function navSlide() {
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".nav-links");
+  const navLinks = document.querySelectorAll(".nav-links li");
+  
+  burger.addEventListener("click", () => {
+      //Toggle Nav
+      nav.classList.toggle("nav-active");
+      
+      //Animate Links
+      navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+              link.style.animation = ""
+          } else {
+              link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+          }
+      });
+      //Burger Animation
+      burger.classList.toggle("toggle");
+  });
+  
+}
+
+navSlide();

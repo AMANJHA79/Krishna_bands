@@ -6,30 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krishna Band</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="main" data-scroll-container>
-        <header>
             <nav>
-                <ul>
+                <div class="logo">
+                    <!-- <img src="/assets/Celebration!.png" alt=""> -->
+                    <h1>Krishna Band</h1>
+                </div>
+                <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#photos">Photos</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="tel:+917830330030">7830330030</a></li>
+                    <li class="btn"><a href="tel:+918755227733">8755227733</a></li>
                 </ul>
-
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
             </nav>
-        </header>
         <section id="home" class="home">
             <div class="left">
                 <h1>Pandit Ji Wala</h1>
-                <p>Krishna band</p>
-                <a href="tel:+917830330030" class="button">Contact Us</a>
+                <p>Krishna Band</p>
+                <a href="tel:+918755227733" class="button">Contact Us</a>
 
             </div>
             <div class="right">
@@ -177,7 +184,7 @@
             </div>
         </section>
 
-        <section class="review">
+        <section id="testimonials" class="review">
             <h1>Customer Reviews</h1>
             <div class="review_box">
                 <div class="boxes">
@@ -215,13 +222,13 @@
                 <img src="/assets/Krishna_Band.png" alt="">
                 <h1>Get in Touch</h1>
                 <p>For bookings and inquiries, please contact us at:</p>
-                <a href="tel:+917830330030">7830330030 <i class="fa-solid fa-phone"></i></a>
+                <a href="tel:+918755227733" class="phn">+91 8755227733 <i class="fa-solid fa-phone"></i></a>
 
                 <h2>Email: </h2>
             </div>
             <div class="address">
                 <h1>Address</h1>
-                <p>Rispana Bridge, Vidhan Sabha Colony, Dehradun, Uttarakhand 248001</p>
+                <p><i class="fa-solid fa-location-dot"></i> Rispana Bridge, Vidhan Sabha Colony, Dehradun, Uttarakhand 248001</p>
             </div>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.9651192667443!2d78.05419807565272!3d30.295054606653206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929a37dce393b%3A0xc4b792b3f5462f30!2sKrishna%20Band!5e0!3m2!1sen!2sin!4v1739730091937!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
@@ -257,6 +264,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
         integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script  type="text/javascript"  src="https://unpkg.com/sheryjs/dist/Shery.js"></script>
     <script src="script.js"></script>
 </body>
 
