@@ -33,17 +33,22 @@ ScrollTrigger.refresh();
 
 // Add smooth scroll behavior for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      locoScroll.scrollTo(target, {
-        offset: -80,
-        duration: 1.2,
-        easing: [0.25, 0.0, 0.35, 1.0]
-      });
-    }
-  });
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            // Use Locomotive Scroll's scrollTo method
+            locoScroll.scrollTo(targetSection);
+        }
+
+        // Close mobile menu after clicking
+        const navLinks = document.querySelector('.nav-links');
+        const burger = document.querySelector('.burger');
+        navLinks.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+    });
 });
 
 function navScrollEffect() {
@@ -94,14 +99,14 @@ gsap.from('.home img', {
 
 init();
 
-Shery.mouseFollower();
+// Shery.mouseFollower();
 
 
-Shery.makeMagnet("nav a" /* Element to target.*/, {
-  //Parameters are optional.
-  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-  duration: 1,
-});
+// Shery.makeMagnet("nav a" /* Element to target.*/, {
+//   //Parameters are optional.
+//   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+//   duration: 1,
+// });
 
 gsap.from('nav a',{
   x: 10,
