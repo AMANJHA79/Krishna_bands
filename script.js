@@ -122,3 +122,31 @@ window.addEventListener('load', () => {
         ScrollTrigger.refresh();
     }, 1000);
 });
+
+// Update music control functionality
+const musicToggle = document.querySelector('.music-toggle');
+const backgroundMusic = document.getElementById('background-music');
+let isPlaying = false;
+
+musicToggle.addEventListener('click', () => {
+  isPlaying = !isPlaying;
+  musicToggle.classList.toggle('playing');
+  
+  // Toggle icon states
+  document.querySelector('.fa-volume-high').classList.toggle('active');
+  document.querySelector('.fa-volume-low').classList.toggle('active');
+  
+  if (isPlaying) {
+    backgroundMusic.play();
+  } else {
+    backgroundMusic.pause();
+  }
+});
+
+// Update ended event
+backgroundMusic.addEventListener('ended', () => {
+  isPlaying = false;
+  musicToggle.classList.remove('playing');
+  document.querySelector('.fa-volume-high').classList.remove('active');
+  document.querySelector('.fa-volume-low').classList.add('active');
+});
