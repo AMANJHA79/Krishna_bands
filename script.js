@@ -150,3 +150,43 @@ backgroundMusic.addEventListener('ended', () => {
   document.querySelector('.fa-volume-high').classList.remove('active');
   document.querySelector('.fa-volume-low').classList.add('active');
 });
+
+// WhatsApp Modal Functions
+function showWhatsAppModal() {
+    document.getElementById('whatsappModal').classList.remove('hidden');
+}
+
+function closeWhatsAppModal() {
+    document.getElementById('whatsappModal').classList.add('hidden');
+}
+
+function sendWhatsAppMessage() {
+    const name = document.getElementById('userName').value;
+    const date = document.getElementById('eventDate').value;
+    
+    if (!name || !date) {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    const message = `Hello Krishna Band!%0A%0AMy name is: ${encodeURIComponent(name)}%0AEvent date: ${encodeURIComponent(date)}`;
+    const whatsappUrl = `https://wa.me/917830330030?text=${message}`;
+    
+    window.open(whatsappUrl, '_blank');
+    closeWhatsAppModal();
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('whatsappModal');
+    if (event.target === modal) {
+        closeWhatsAppModal();
+    }
+}
+
+// Close modal with ESC key
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !document.getElementById('whatsappModal').classList.contains('hidden')) {
+        closeWhatsAppModal();
+    }
+});
