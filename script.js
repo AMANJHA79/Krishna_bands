@@ -1,214 +1,114 @@
-const init=()=>{
-    gsap.registerPlugin(ScrollTrigger);
 
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector(".main"),
-  smooth: true,
-  lerp: 0.05,
-  multiplier: 0.7
-});
-locoScroll.on("scroll", ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy(".main", {
-  scrollTop(value) {
-    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-  },
-  getBoundingClientRect() {
-    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-  },
-  pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
-});
-
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-ScrollTrigger.refresh();
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            locoScroll.scrollTo(targetSection);
-        }
-
-        const nav = document.querySelector('.nav-links');
-        const burger = document.querySelector('.burger');
-        if (window.innerWidth <= 768) {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-});
-
-function navScrollEffect() {
-  const nav = document.querySelector('nav');
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-  });
-}
-
-gsap.from('.home h1, .home p', {
-    duration: 1.2,
-    y: 50,
-    opacity: 0,
-    stagger: 0.2,
-    ease: "power4.out",
-    scrollTrigger: {
-        trigger: '.home',
-        start: "top center"
-    }
-});
-
-gsap.from('.home img', {
-    duration: 1.5,
-    scale: 0.9,
-    opacity: 0,
-    ease: "power4.out",
-    scrollTrigger: {
-        trigger: '.home',
-        start: "top center"
-    }
-});
-
-};
-
-init();
-
-gsap.from('nav a',{
-  x: 10,
-  delay: 0.5,
-  stagger: 0.2,
-  duration: 1
+var tl = gsap.timeline();
+tl.from("nav h1, nav .burger", {
+  y: -100,
+  opacity: 0,
+  duration: 0.3,
+  ease: "power2.out",
 })
 
-function navSlide() {
-  const burger = document.querySelector(".burger");
-  const nav = document.querySelector(".nav-links");
-  const navLinks = document.querySelectorAll(".nav-links li");
-  
-  function closeMenu() {
-    nav.classList.remove("nav-active");
-    burger.classList.remove("toggle");
-    document.body.classList.remove("no-scroll");
-    navLinks.forEach(link => link.style.animation = "");
-  }
+tl.from("nav ul li", {
+  y: -100,
+  opacity: 0,
+  duration: 0.4,
+  ease: "power2.out",
+  stagger: 0.1,
+})
 
-  burger.addEventListener("click", () => {
-    const isActive = nav.classList.contains("nav-active");
-    if (!isActive) {
-      nav.classList.add("nav-active");
-      document.body.classList.add("no-scroll");
-      navLinks.forEach((link, index) => {
-        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-      });
-    } else {
-      closeMenu();
-    }
-    burger.classList.toggle("toggle");
-  });
+var tl2 = gsap.timeline();
+tl2.from(".home .left h1", {
+  x: -100,
+  opacity: 0,
+  duration: 0.8,
+  ease: "ease.out",
 
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains("nav-active")) {
-      closeMenu();
-    }
-  });
+})
+tl2.from(".home p", {
+  x: -100,
+  opacity: 0,
+  duration: 0.8, 
+})
 
-  // Close menu when clicking nav links
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth <= 768) {
-        closeMenu();
-      }
+
+// Add mobile menu functionality
+function toggleNav() {
+    const navLinks = document.querySelector('.nav-links');
+    const burger = document.querySelector('.burger');
+    const body = document.body;
+    
+    // Toggle menu
+    navLinks.classList.toggle('nav-active');
+    burger.classList.toggle('toggle');
+    body.classList.toggle('no-scroll');
+
+    // Animate links
+    document.querySelectorAll('.nav-links li').forEach((link, index) => {
+        link.style.animation = navLinks.classList.contains('nav-active') 
+            ? `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`
+            : '';
     });
-  });
 }
 
-navSlide();
-
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        locoScroll.update();
-        ScrollTrigger.refresh();
-    }, 1000);
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const nav = document.querySelector('nav');
+    if (!nav.contains(e.target) && document.querySelector('.nav-active')) {
+        toggleNav();
+    }
 });
 
-// Update music control functionality
-const musicToggle = document.querySelector('.music-toggle');
-const backgroundMusic = document.getElementById('background-music');
-let isPlaying = false;
-
-musicToggle.addEventListener('click', () => {
-  isPlaying = !isPlaying;
-  musicToggle.classList.toggle('playing');
-  
-  // Toggle icon states
-  document.querySelector('.fa-volume-high').classList.toggle('active');
-  document.querySelector('.fa-volume-low').classList.toggle('active');
-  
-  if (isPlaying) {
-    backgroundMusic.play();
-  } else {
-    backgroundMusic.pause();
-  }
+// Close menu after clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', toggleNav);
 });
 
-// Update ended event
-backgroundMusic.addEventListener('ended', () => {
-  isPlaying = false;
-  musicToggle.classList.remove('playing');
-  document.querySelector('.fa-volume-high').classList.remove('active');
-  document.querySelector('.fa-volume-low').classList.add('active');
-});
+// Initialize burger menu
+document.querySelector('.burger').addEventListener('click', toggleNav);
 
-// WhatsApp Modal Functions
+
+// WhatsApp Modal Handling
 function showWhatsAppModal() {
-    document.getElementById('whatsappModal').classList.remove('hidden');
+    const modal = document.getElementById('whatsappModal');
+    modal.classList.remove('hidden');
+    document.body.classList.add('no-scroll');
 }
 
 function closeWhatsAppModal() {
-    document.getElementById('whatsappModal').classList.add('hidden');
+    const modal = document.getElementById('whatsappModal');
+    modal.classList.add('hidden');
+    document.body.classList.remove('no-scroll');
 }
 
 function sendWhatsAppMessage() {
     const name = document.getElementById('userName').value;
     const date = document.getElementById('eventDate').value;
-    
-    if (!name || !date) {
-        alert('Please fill in all fields');
-        return;
-    }
-
-    const message = `Hello Krishna Band!%0A%0AMy name is: ${encodeURIComponent(name)}%0AEvent date: ${encodeURIComponent(date)}`;
-    const whatsappUrl = `https://wa.me/917830330030?text=${message}`;
-    
-    window.open(whatsappUrl, '_blank');
+    const message = `Hi Krishna Band! My name is ${name}. I have an event on ${date}. Please contact me.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/918755227733?text=${encodedMessage}`, '_blank');
     closeWhatsAppModal();
 }
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('whatsappModal');
-    if (event.target === modal) {
-        closeWhatsAppModal();
-    }
-}
+// Add these event listeners
+document.querySelector('.whatsapp-float').addEventListener('click', showWhatsAppModal);
+document.querySelector('.modal').addEventListener('click', function(e) {
+    if(e.target === this) closeWhatsAppModal();
+});
+document.querySelector('.close').addEventListener('click', closeWhatsAppModal);
 
-// Close modal with ESC key
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !document.getElementById('whatsappModal').classList.contains('hidden')) {
-        closeWhatsAppModal();
+// Music Player Handling
+document.querySelector('.music-toggle').addEventListener('click', function() {
+    const audio = document.getElementById('background-music');
+    const isPlaying = !audio.paused;
+    
+    if(isPlaying) {
+        audio.pause();
+        document.querySelector('.music-state.on').classList.remove('active');
+        document.querySelector('.music-state.off').classList.add('active');
+    } else {
+        audio.play().catch(() => {/* Handle browser autoplay restrictions */});
+        document.querySelector('.music-state.off').classList.remove('active');
+        document.querySelector('.music-state.on').classList.add('active');
     }
+    this.classList.toggle('playing');
 });
