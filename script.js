@@ -85,7 +85,8 @@ function sendWhatsAppMessage() {
     const date = document.getElementById('eventDate').value;
     const message = `Hi Krishna Band! My name is ${name}. I have an event on ${date}. Please contact me.`;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/918755227733?text=${encodedMessage}`, '_blank');
+    // Update the phone number format (added country code prefix)
+    window.open(`https://wa.me/917830330030?text=${encodedMessage}`, '_blank');
     closeWhatsAppModal();
 }
 
